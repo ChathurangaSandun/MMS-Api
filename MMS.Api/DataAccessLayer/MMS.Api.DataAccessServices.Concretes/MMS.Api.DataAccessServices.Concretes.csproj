@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MMS.Api.DataAccessServices.Entities\MMS.Api.DataAccessServices.Entities.csproj" />
+    <ProjectReference Include="..\MMS.Api.DataAccessServices.Interfaces\MMS.Api.DataAccessServices.Interfaces.csproj" />
+  </ItemGroup>
+
 </Project>
