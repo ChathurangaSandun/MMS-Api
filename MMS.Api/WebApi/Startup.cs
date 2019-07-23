@@ -107,3 +107,13 @@ namespace WebApi
         }
     }
 }
+
+
+/*
+ * serilog
+ * profiler
+ * migrating
+ * swagger 
+ * clear repositories  methods
+ * healthcheck
+ */
