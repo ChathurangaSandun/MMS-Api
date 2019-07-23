@@ -116,4 +116,6 @@ namespace WebApi
  * swagger 
  * clear repositories  methods
  * healthcheck
+ * fluentvalidation
+ * db validations
  */

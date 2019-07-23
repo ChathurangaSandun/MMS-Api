@@ -16,3 +16,6 @@ namespace MMS.Api.DataAccessServices.Entities
         public DbSet<CustomerEntity> Customers { get; set; }
     }
 }
+
+// Add-Migration NewMigration -Project Accoon.Api.DataServices.Entities -StartupProject Accoon.Api
+// update-database -verbose
