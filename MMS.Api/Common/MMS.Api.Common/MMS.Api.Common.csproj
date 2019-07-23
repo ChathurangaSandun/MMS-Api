@@ -9,8 +9,15 @@
     <Folder Include="Entities\" />
     <Folder Include="Middlewares\" />
     <Folder Include="Filters\" />
-    <Folder Include="Concretes\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Infastructure\" />
     <Folder Include="Paginations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
   </ItemGroup>
 
 </Project>
