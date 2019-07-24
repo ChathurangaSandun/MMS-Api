@@ -28,3 +28,15 @@
 /MMS.Api/DataAccessLayer/MMS.Api.DataAccessServices.Interfaces/obj
 /MMS.Api/DataAccessLayer/MMS.Api.DataAccessServices.Interfaces/bin/Debug/netcoreapp2.2
 /MMS.Api/WebApi/bin/Debug/netcoreapp2.2
+/.vs/MMS/v16
+/.vs/MMS/config
+/MMS.Api/Accoon.MMS.Api.Application/bin/Debug/netcoreapp2.2
+/MMS.Api/Accoon.MMS.Api.Application/obj
+/MMS.Api/Accoon.MMS.Api.Domain/bin/Debug/netcoreapp2.2
+/MMS.Api/Accoon.MMS.Api.Domain/obj
+/MMS.Api/Accoon.MMS.Api.Infastructure/bin/Debug/netcoreapp2.2
+/MMS.Api/Accoon.MMS.Api.Infastructure/obj
+/MMS.Api/Accoon.MMS.Api.Persistence/bin/Debug/netcoreapp2.2
+/MMS.Api/Accoon.MMS.Api.Persistence/obj
+/MMS.Api/Accoon.MMS.Api.Presenter/bin/Debug/netcoreapp2.2
+/MMS.Api/Accoon.MMS.Api.Presenter/obj
