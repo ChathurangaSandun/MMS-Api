@@ -29,3 +29,4 @@ namespace Accoon.MMS.Api.Persistence.DatabaseContext
 // Add migrations
 // Add-Migration InitMigration -Project Accoon.MMS.Api.Persistence -StartupProject Accoon.MMS.Api.Presenter -Context DefaultDatabaseContext
 // update-database -Project Accoon.MMS.Api.Persistence -StartupProject Accoon.MMS.Api.Presenter
+//https://fullstackmark.com/post/19/jwt-authentication-flow-with-refresh-tokens-in-aspnet-core-web-api
