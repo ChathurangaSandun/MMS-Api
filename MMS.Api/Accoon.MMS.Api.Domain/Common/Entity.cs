@@ -17,6 +17,8 @@ namespace Accoon.MMS.Api.Domain.Common
         /// Unique identifier for this entity.
         /// </summary>
         public virtual TPrimaryKey Id { get; set; }
+        public virtual DateTime Created { get; set; }
+        public virtual DateTime Modified { get; set; }
 
         /// <summary>
         /// Checks if this entity is transient (it has not an Id).

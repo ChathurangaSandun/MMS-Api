@@ -14,6 +14,9 @@ namespace Accoon.MMS.Api.Persistence.DatabaseContext
 
         // database entities
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+        public DbSet<User> Users { get; set; }
+
 
         // register entity configurations
         protected override void OnModelCreating(ModelBuilder modelBuilder)

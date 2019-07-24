@@ -16,6 +16,16 @@ namespace Accoon.MMS.Api.Domain.Common
         TPrimaryKey Id { get; set; }
 
         /// <summary>
+        /// Created date
+        /// </summary>
+        DateTime Created { get; set; }
+
+        /// <summary>
+        /// Modified date
+        /// </summary>
+        DateTime Modified { get; set; }
+
+        /// <summary>
         /// Checks if this entity is transient (not persisted to database and it has not an <see cref="Id"/>).
         /// </summary>
         /// <returns>True, if this entity is transient</returns>
