@@ -19,6 +19,7 @@ using MMS.Api.Common.Interfaces;
 using MMS.Api.Common.Paginations;
 using MMS.Api.DataAccessServices.Concretes.Repositories;
 using MMS.Api.DataAccessServices.Entities;
+using Swashbuckle.AspNetCore.Swagger;
 using WebApi.Infastructure;
 using WebApi.Middlewares;
 
@@ -84,6 +85,12 @@ namespace WebApi
                 .AsImplementedInterfaces()
                 .WithTransientLifetime());
 
+            // swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -94,13 +101,19 @@ namespace WebApi
                 app.UseDeveloperExceptionPage();
             }
             else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            {                
                 app.UseHsts();
             }
 
             // handle error handling globaly using middleware
             app.ConfigureExceptionHandler(env);
+
+            // swagger
+            app.UseSwagger();            
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
 
             app.UseHttpsRedirection();
             app.UseMvc();
@@ -111,9 +124,7 @@ namespace WebApi
 
 /*
  * serilog
- * profiler
- * migrating
- * swagger 
+ * profiler  
  * clear repositories  methods
  * healthcheck
  * fluentvalidation

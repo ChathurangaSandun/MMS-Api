@@ -17,5 +17,5 @@ namespace MMS.Api.DataAccessServices.Entities
     }
 }
 
-// Add-Migration NewMigration -Project Accoon.Api.DataServices.Entities -StartupProject Accoon.Api
+// Add-Migration NewMigration -Project MMS.Api.DataAccessServices.Entities -StartupProject WebApi
 // update-database -verbose
