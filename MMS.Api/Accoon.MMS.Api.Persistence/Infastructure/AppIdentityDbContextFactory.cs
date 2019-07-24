@@ -1,4 +1,5 @@
-﻿using Accoon.MMS.Api.Persistence.DatabaseContext;
+﻿using Accoon.MMS.Api.Persistence.IdentityDatabaseContext;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using System;
 using System.Collections.Generic;
@@ -8,24 +9,24 @@ using System.Text;
 
 namespace Accoon.MMS.Api.Persistence.Infastructure
 {
-    public class DatabaseContextFactory : IDesignTimeDbContextFactory<DefaultDatabaseContext>
+    public class AppIdentityDbContextFactory : IDesignTimeDbContextFactory<AppIdentityDbContext>
     {
-        public DatabaseContextFactory()
+
+        public AppIdentityDbContextFactory()
         {
             Debugger.Launch();
         }
-
-        public DefaultDatabaseContext CreateDbContext(string[] args)
+        public AppIdentityDbContext CreateDbContext(string[] args)
         {
             var currentDirentory = Path.Combine(Directory.GetCurrentDirectory());
             Console.WriteLine(currentDirentory);
-            var resolver = new DependencyResolver
+            var resolver = new IdentityDependencyResolver
             {
                 CurrentDirectory = currentDirentory
 
             };
 
-            return resolver.ServiceProvider.GetService(typeof(DefaultDatabaseContext)) as DefaultDatabaseContext;
+            return resolver.ServiceProvider.GetService(typeof(AppIdentityDbContext)) as AppIdentityDbContext;
         }
     }
 }
