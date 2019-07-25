@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Accoon.MMS.Api.Presenter.Controllers
 {
-    public class CustomersController : BaseController
+    public class CustomersController : MainBaseController
     {
         private readonly ILogger<CustomersController> logger;
 
@@ -20,15 +20,14 @@ namespace Accoon.MMS.Api.Presenter.Controllers
         {
             this.logger = logger;
         }
+
         [Route("")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateCustomerCommand createCustomerCommand)
-        {
-            logger.LogInformation("start : ");
+        {            
             var customer = await Mediator.Send(createCustomerCommand);
-            logger.LogInformation("added " + customer.CustomerId);
             return CreatedAtAction(nameof(Get), new { id = customer.CustomerId }, null);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Accoon.MMS.Api.Application.Interfaces.Database;
 using Accoon.MMS.Api.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Accoon.MMS.Api.Persistence.DatabaseContext
 {
@@ -21,7 +22,18 @@ namespace Accoon.MMS.Api.Persistence.DatabaseContext
         // register entity configurations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>(ConfigureUser);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DefaultDatabaseContext).Assembly);
+        }
+
+        public void ConfigureUser(EntityTypeBuilder<User> builder)
+        {
+            var navigation = builder.Metadata.FindNavigation(nameof(User.RefreshTokens));
+            //EF access the RefreshTokens collection property through its backing field
+            navigation.SetPropertyAccessMode(PropertyAccessMode.Field);
+
+            builder.Ignore(b => b.Email);
+            builder.Ignore(b => b.PasswordHash);
         }
     }
 }

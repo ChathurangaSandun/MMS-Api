@@ -16,4 +16,10 @@
     <ProjectReference Include="..\Accoon.MMS.Api.Domain\Accoon.MMS.Api.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UserCases\AccountActor\CreateAccount\" />
+    <Folder Include="UserCases\AccountActor\login\" />
+    <Folder Include="UserCases\AccountActor\RefreshToken\" />
+  </ItemGroup>
+
 </Project>
