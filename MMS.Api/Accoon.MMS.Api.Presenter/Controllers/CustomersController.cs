@@ -6,13 +6,15 @@ using Accoon.MMS.Api.Application.UserCases.Customer.CreateCustomer;
 using Accoon.MMS.Api.Application.UserCases.Customer.GetCustomer;
 using Accoon.MMS.Api.Application.UserCases.Customer.GetCustomerList;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Accoon.MMS.Api.Presenter.Controllers
 {
-    public class CustomersController : BaseController
+    [Authorize(Policy = "ApiUser")]
+    public class CustomersController : MainBaseController
     {
         private readonly ILogger<CustomersController> logger;
 
@@ -20,15 +22,14 @@ namespace Accoon.MMS.Api.Presenter.Controllers
         {
             this.logger = logger;
         }
+
         [Route("")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateCustomerCommand createCustomerCommand)
-        {
-            logger.LogInformation("start : ");
+        {            
             var customer = await Mediator.Send(createCustomerCommand);
-            logger.LogInformation("added " + customer.CustomerId);
             return CreatedAtAction(nameof(Get), new { id = customer.CustomerId }, null);
         }
 
