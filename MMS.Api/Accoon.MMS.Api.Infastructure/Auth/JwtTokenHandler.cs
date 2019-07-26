@@ -5,15 +5,16 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Accoon.MMS.Api.Infastructure.Auth
 {
-    internal sealed class JwtTokenHandler : IJwtTokenHandler
+    public sealed class JwtTokenHandler : IJwtTokenHandler
     {
         private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler;
         //private readonly ILogger _logger;
 
-        internal JwtTokenHandler(/*ILogger logger*/)
+        public JwtTokenHandler(/*ILogger logger*/)
         {
             if (_jwtSecurityTokenHandler == null)
                 _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            
 
             //_logger = logger;
         }

@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace Accoon.MMS.Api.Infastructure.Auth
 {
-    internal sealed class TokenFactory : ITokenFactory
+    public sealed class TokenFactory : ITokenFactory
     {
         public string GenerateToken(int size=32)
         {

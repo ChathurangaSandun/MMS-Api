@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Accoon.MMS.Api.Persistence.Migrations.DefaultDatabase
+namespace Accoon.MMS.Api.Persistence.Migrations
 {
     [DbContext(typeof(DefaultDatabaseContext))]
-    [Migration("20190726103804_changedb")]
-    partial class changedb
+    [Migration("20190726151252_InitMigration")]
+    partial class InitMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,11 +58,13 @@ namespace Accoon.MMS.Api.Persistence.Migrations.DefaultDatabase
 
                     b.Property<string>("Token");
 
-                    b.Property<Guid>("UserId");
+                    b.Property<string>("UserId");
+
+                    b.Property<Guid?>("UserId1");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("RefreshTokens");
                 });
@@ -93,8 +95,7 @@ namespace Accoon.MMS.Api.Persistence.Migrations.DefaultDatabase
                 {
                     b.HasOne("Accoon.MMS.Api.Domain.Entities.User")
                         .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }

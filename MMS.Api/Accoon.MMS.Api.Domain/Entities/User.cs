@@ -33,7 +33,7 @@ namespace Accoon.MMS.Api.Domain.Entities
             return _refreshTokens.Any(rt => rt.Token == refreshToken && rt.Active);
         }
 
-        public void AddRefreshToken(string token, Guid userId, string remoteIpAddress, double daysToExpire = 5)
+        public void AddRefreshToken(string token, string userId, string remoteIpAddress, double daysToExpire = 5)
         {
             _refreshTokens.Add(new RefreshToken(token, DateTime.UtcNow.AddDays(daysToExpire), userId, remoteIpAddress));
         }

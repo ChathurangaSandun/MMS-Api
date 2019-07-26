@@ -6,12 +6,14 @@ using Accoon.MMS.Api.Application.UserCases.Customer.CreateCustomer;
 using Accoon.MMS.Api.Application.UserCases.Customer.GetCustomer;
 using Accoon.MMS.Api.Application.UserCases.Customer.GetCustomerList;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace Accoon.MMS.Api.Presenter.Controllers
 {
+    [Authorize(Policy = "ApiUser")]
     public class CustomersController : MainBaseController
     {
         private readonly ILogger<CustomersController> logger;

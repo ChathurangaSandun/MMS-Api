@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Accoon.MMS.Api.Application\Accoon.MMS.Api.Application.csproj" />
+    <ProjectReference Include="..\Accoon.MMS.Api.Persistence\Accoon.MMS.Api.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

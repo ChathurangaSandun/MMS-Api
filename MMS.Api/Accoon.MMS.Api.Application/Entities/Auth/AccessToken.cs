@@ -6,8 +6,8 @@ namespace Accoon.MMS.Api.Application.Entities.Auth
 {
     public sealed class AccessToken
     {
-        public string Token { get; }
-        public int ExpiresIn { get; }
+        public string Token { get; set; }
+        public int ExpiresIn { get; set; }
 
         public AccessToken(string token, int expiresIn)
         {

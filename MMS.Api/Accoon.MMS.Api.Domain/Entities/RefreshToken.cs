@@ -7,13 +7,18 @@ namespace Accoon.MMS.Api.Domain.Entities
 {
     public class RefreshToken : Entity<Guid>
     {
-        public string Token { get; private set; }
-        public DateTime Expires { get; private set; }
-        public Guid UserId { get; private set; }
+        public string Token { get;  set; }
+        public DateTime Expires { get;  set; }
+        public string UserId { get;  set; }
         public bool Active => DateTime.UtcNow <= Expires;
-        public string RemoteIpAddress { get; private set; }
+        public string RemoteIpAddress { get;  set; }
 
-        public RefreshToken(string token, DateTime expires, Guid userId, string remoteIpAddress)
+        public RefreshToken()
+        {
+
+        }
+
+        public RefreshToken(string token, DateTime expires, string userId, string remoteIpAddress)
         {
             Token = token;
             Expires = expires;

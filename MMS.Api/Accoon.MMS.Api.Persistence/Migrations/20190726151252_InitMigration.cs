@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Accoon.MMS.Api.Persistence.Migrations.DefaultDatabase
+namespace Accoon.MMS.Api.Persistence.Migrations
 {
-    public partial class changedb : Migration
+    public partial class InitMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,24 +49,25 @@ namespace Accoon.MMS.Api.Persistence.Migrations.DefaultDatabase
                     Modified = table.Column<DateTime>(nullable: false),
                     Token = table.Column<string>(nullable: true),
                     Expires = table.Column<DateTime>(nullable: false),
-                    UserId = table.Column<Guid>(nullable: false),
-                    RemoteIpAddress = table.Column<string>(nullable: true)
+                    UserId = table.Column<string>(nullable: true),
+                    RemoteIpAddress = table.Column<string>(nullable: true),
+                    UserId1 = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_RefreshTokens", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RefreshTokens_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_RefreshTokens_Users_UserId1",
+                        column: x => x.UserId1,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_RefreshTokens_UserId",
+                name: "IX_RefreshTokens_UserId1",
                 table: "RefreshTokens",
-                column: "UserId");
+                column: "UserId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

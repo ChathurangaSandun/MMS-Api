@@ -33,6 +33,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Accoon.MMS.Api.Infastructure.Helper;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Accoon.MMS.Api.Application.Interfaces.Services.Auth;
+using Accoon.MMS.Api.Application.UserCases.AccountActor.login;
 
 namespace Accoon.MMS.Api.Presenter
 {
@@ -80,8 +82,10 @@ namespace Accoon.MMS.Api.Presenter
 
             // register mediatr and command handlers
             services.AddMediatR(typeof(CreateCustomerHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(LoginRequestHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(LoginResponseHandler).GetTypeInfo().Assembly);
 
-          
+
 
             // health check
             services.AddHealthChecks()
@@ -89,6 +93,14 @@ namespace Accoon.MMS.Api.Presenter
 
             // idnetity framework
             services.AddDbContext<AppIdentityDbContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("Accoon.MMS.Api.Persistence")));
+
+
+
+            services.AddTransient<ITokenFactory, Accoon.MMS.Api.Infastructure.Auth.TokenFactory>();
+            services.AddTransient<IJwtFactory, Accoon.MMS.Api.Infastructure.Auth.JwtFactory>();
+            services.AddTransient<IJwtTokenHandler, Accoon.MMS.Api.Infastructure.Auth.JwtTokenHandler>();
+            services.AddTransient<IJwtTokenValidator, JwtTokenValidator>();
+
 
             // Register the ConfigurationBuilder instance of AuthSettings
             var authSettings = Configuration.GetSection(nameof(AuthSettings));

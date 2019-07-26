@@ -5,11 +5,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Accoon.MMS.Api.Infastructure.Auth
 {
-    internal sealed class JwtTokenValidator : IJwtTokenValidator
+    public sealed class JwtTokenValidator : IJwtTokenValidator
     {
         private readonly IJwtTokenHandler _jwtTokenHandler;
 
-        internal JwtTokenValidator(IJwtTokenHandler jwtTokenHandler)
+        public JwtTokenValidator(IJwtTokenHandler jwtTokenHandler)
         {
             _jwtTokenHandler = jwtTokenHandler;
         }
