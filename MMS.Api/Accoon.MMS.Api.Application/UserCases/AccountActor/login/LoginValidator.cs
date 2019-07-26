@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Accoon.MMS.Api.Application.UserCases.AccountActor.login
 {
-    class LoginValidator
+    public class LoginValidator
     {
     }
 }
