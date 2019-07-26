@@ -1,27 +1,32 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{8560DBD9-201A-4D8F-BAF7-A6DDEAB3CA3E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accoon.MMS.Api.Application", "MMS.Api\Accoon.MMS.Api.Application\Accoon.MMS.Api.Application.csproj", "{E5C4B662-4042-4020-91CD-8EF140EB11CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accoon.MMS.Api.Application", "MMS.Api\Accoon.MMS.Api.Application\Accoon.MMS.Api.Application.csproj", "{E5C4B662-4042-4020-91CD-8EF140EB11CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenter", "Presenter", "{7206DAF9-1D03-4F2D-9915-2DE746A598B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accoon.MMS.Api.Presenter", "MMS.Api\Accoon.MMS.Api.Presenter\Accoon.MMS.Api.Presenter.csproj", "{E8ACC97B-434A-419B-8915-C4A815EF1AE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accoon.MMS.Api.Presenter", "MMS.Api\Accoon.MMS.Api.Presenter\Accoon.MMS.Api.Presenter.csproj", "{E8ACC97B-434A-419B-8915-C4A815EF1AE2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{7B177AA2-17AC-431F-8EDC-33D1D0462BF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accoon.MMS.Api.Domain", "MMS.Api\Accoon.MMS.Api.Domain\Accoon.MMS.Api.Domain.csproj", "{071EC1A7-F80D-4964-8515-F675E2C41422}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accoon.MMS.Api.Domain", "MMS.Api\Accoon.MMS.Api.Domain\Accoon.MMS.Api.Domain.csproj", "{071EC1A7-F80D-4964-8515-F675E2C41422}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastructure", "{CE34D721-0629-4083-A55C-68BD41FF2EED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accoon.MMS.Api.Infastructure", "MMS.Api\Accoon.MMS.Api.Infastructure\Accoon.MMS.Api.Infastructure.csproj", "{6D07ABB0-34DE-40C5-92EC-BD2D375A5633}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accoon.MMS.Api.Infastructure", "MMS.Api\Accoon.MMS.Api.Infastructure\Accoon.MMS.Api.Infastructure.csproj", "{6D07ABB0-34DE-40C5-92EC-BD2D375A5633}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{2648AE13-2C54-4C29-9272-6B39C6557047}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accoon.MMS.Api.Persistence", "MMS.Api\Accoon.MMS.Api.Persistence\Accoon.MMS.Api.Persistence.csproj", "{EA158558-FA8E-487B-B6E0-19B4B5420F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accoon.MMS.Api.Persistence", "MMS.Api\Accoon.MMS.Api.Persistence\Accoon.MMS.Api.Persistence.csproj", "{EA158558-FA8E-487B-B6E0-19B4B5420F29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{91B170E4-79DA-4DFD-A732-D21587D27065}"
+	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
