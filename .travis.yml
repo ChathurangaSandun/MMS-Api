@@ -1,0 +1,14 @@
+language: csharp
+mono: none
+sudo: required
+dist: xenial
+dotnet: 2.2
+branch: 
+    - master
+script:
+    - dotnet build MMS.Api\Accoon.MMS.Api.Application -c Release
+    - dotnet build MMS.Api\Accoon.MMS.Api.Domain -c Release
+    - dotnet build MMS.Api\Accoon.MMS.Api.Infastructure -c Release
+    - dotnet build MMS.Api\Accoon.MMS.Api.Persistence -c Release
+    - dotnet build MMS.Api\Accoon.MMS.Api.Presenter -c Release
+   
