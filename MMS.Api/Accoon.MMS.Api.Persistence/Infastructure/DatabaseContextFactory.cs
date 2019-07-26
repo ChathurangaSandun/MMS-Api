@@ -12,7 +12,7 @@ namespace Accoon.MMS.Api.Persistence.Infastructure
     {
         public DatabaseContextFactory()
         {
-            Debugger.Launch();
+            //Debugger.Launch();
         }
 
         public DefaultDatabaseContext CreateDbContext(string[] args)

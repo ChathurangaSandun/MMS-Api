@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Accoon.MMS.Api.Persistence.Migrations.AppIdentityDb
+namespace Accoon.MMS.Api.Persistence.Migrations
 {
-    public partial class InitMigration : Migration
+    public partial class chagngeuser : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

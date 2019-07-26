@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Accoon.MMS.Api.Persistence.Migrations.AppIdentityDb
+namespace Accoon.MMS.Api.Persistence.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20190724194731_InitMigration")]
-    partial class InitMigration
+    [Migration("20190726103905_chagngeuser")]
+    partial class chagngeuser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

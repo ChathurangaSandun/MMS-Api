@@ -14,7 +14,7 @@ namespace Accoon.MMS.Api.Persistence.Infastructure
 
         public AppIdentityDbContextFactory()
         {
-            Debugger.Launch();
+            //Debugger.Launch();
         }
         public AppIdentityDbContext CreateDbContext(string[] args)
         {

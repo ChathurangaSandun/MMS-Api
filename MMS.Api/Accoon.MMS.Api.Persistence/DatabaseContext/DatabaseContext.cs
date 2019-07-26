@@ -17,6 +17,7 @@ namespace Accoon.MMS.Api.Persistence.DatabaseContext
         public DbSet<Customer> Customers { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<User> Users { get; set; }
+        
 
 
         // register entity configurations
