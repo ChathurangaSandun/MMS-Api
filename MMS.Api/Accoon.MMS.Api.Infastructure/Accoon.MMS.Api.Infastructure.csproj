@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Accoon.MMS.Api.Application\Accoon.MMS.Api.Application.csproj" />
     <ProjectReference Include="..\Accoon.MMS.Api.Persistence\Accoon.MMS.Api.Persistence.csproj" />
   </ItemGroup>
