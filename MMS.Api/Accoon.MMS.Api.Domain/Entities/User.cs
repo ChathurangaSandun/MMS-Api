@@ -8,17 +8,17 @@ namespace Accoon.MMS.Api.Domain.Entities
 {
     public class User : Entity<Guid>
     {
-        public string FirstName { get; private set; } // EF migrations require at least private setter - won't work on auto-property
-        public string LastName { get; private set; }
-        public string IdentityId { get; private set; }
-        public string UserName { get; private set; } // Required by automapper
-        public string Email { get; private set; }
+        public string FirstName { get;  set; } // EF migrations require at least private setter - won't work on auto-property
+        public string LastName { get; set; }
+        public string IdentityId { get; set; }
+        public string UserName { get; set; } // Required by automapper
+        public string Email { get; set; }
         public string PasswordHash { get; private set; }
 
         private readonly List<RefreshToken> _refreshTokens = new List<RefreshToken>();
         public IReadOnlyCollection<RefreshToken> RefreshTokens => _refreshTokens.AsReadOnly();
 
-        internal User() { /* Required by EF */ }
+        public User() { /* Required by EF */ }
 
         internal User(string firstName, string lastName, string identityId, string userName)
         {
@@ -33,7 +33,7 @@ namespace Accoon.MMS.Api.Domain.Entities
             return _refreshTokens.Any(rt => rt.Token == refreshToken && rt.Active);
         }
 
-        public void AddRefreshToken(string token, Guid userId, string remoteIpAddress, double daysToExpire = 5)
+        public void AddRefreshToken(string token, string userId, string remoteIpAddress, double daysToExpire = 5)
         {
             _refreshTokens.Add(new RefreshToken(token, DateTime.UtcNow.AddDays(daysToExpire), userId, remoteIpAddress));
         }

@@ -15,6 +15,9 @@ namespace Accoon.MMS.Api.Application.Interfaces.Database
     {
         // define dbsets in database
         DbSet<Customer> Customers { get; set; }
+        DbSet<User> Users { get; set; }
+        DbSet<RefreshToken> RefreshTokens { get; set; }
+
 
         // save database changes  
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

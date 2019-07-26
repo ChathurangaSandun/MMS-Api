@@ -56,11 +56,13 @@ namespace Accoon.MMS.Api.Persistence.Migrations
 
                     b.Property<string>("Token");
 
-                    b.Property<Guid>("UserId");
+                    b.Property<string>("UserId");
+
+                    b.Property<Guid?>("UserId1");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId1");
 
                     b.ToTable("RefreshTokens");
                 });
@@ -72,8 +74,6 @@ namespace Accoon.MMS.Api.Persistence.Migrations
 
                     b.Property<DateTime>("Created");
 
-                    b.Property<string>("Email");
-
                     b.Property<string>("FirstName");
 
                     b.Property<string>("IdentityId");
@@ -81,8 +81,6 @@ namespace Accoon.MMS.Api.Persistence.Migrations
                     b.Property<string>("LastName");
 
                     b.Property<DateTime>("Modified");
-
-                    b.Property<string>("PasswordHash");
 
                     b.Property<string>("UserName");
 
@@ -95,8 +93,7 @@ namespace Accoon.MMS.Api.Persistence.Migrations
                 {
                     b.HasOne("Accoon.MMS.Api.Domain.Entities.User")
                         .WithMany("RefreshTokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId1");
                 });
 #pragma warning restore 612, 618
         }
