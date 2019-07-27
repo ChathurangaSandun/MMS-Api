@@ -9,8 +9,19 @@ namespace Accoon.MMS.Api.Application.UserCases.AccountActor.login
 {
     public class LoginResponse :  INotification
     {
-        public bool Success { get; set; }
-        public AccessToken AccessToken { get; set; }
-        public string RefreshToken { get; set; }
+        public bool IsAuthenticated { get;  }
+        public AccessToken AccessToken { get; } 
+        public string RefreshToken { get; }
+
+        public LoginResponse(bool isAuthenticated, AccessToken accessToken, string refreshToken)
+        {
+            this.IsAuthenticated = isAuthenticated;
+            this.AccessToken = accessToken;
+            this.RefreshToken = refreshToken;
+        }
+
+        public LoginResponse(bool isisAuthenticated): this(isisAuthenticated, null, null)
+        {   
+        }
     }
 }

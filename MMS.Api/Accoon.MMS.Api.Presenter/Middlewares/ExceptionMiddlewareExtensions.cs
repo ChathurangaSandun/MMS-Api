@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Accoon.MMS.Api.Domain.Exceptions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using System;
@@ -14,6 +16,8 @@ namespace Accoon.MMS.Api.Presenter.Middlewares
 {
     public static class ExceptionMiddlewareExtensions
     {
+
+        // TODO : exception factory
         public static void ConfigureExceptionHandler(this IApplicationBuilder app, IHostingEnvironment env)
         {
             app.UseExceptionHandler(errorApp =>
@@ -32,6 +36,12 @@ namespace Accoon.MMS.Api.Presenter.Middlewares
                         problemDetails.Status = (int)typeof(BadHttpRequestException).GetProperty("StatusCode",
                             BindingFlags.NonPublic | BindingFlags.Instance).GetValue(badHttpRequestException);
                         problemDetails.Detail = badHttpRequestException.Message;
+                    }
+                    else if (exception is UnauthorizedAccessException unauthorizedAccessException)
+                    {
+                        problemDetails.Title = "Unauthorized error occurred";
+                        problemDetails.Status = StatusCodes.Status401Unauthorized;
+                        problemDetails.Detail = exception.Message.ToString();
                     }
                     else
                     {
