@@ -1,7 +1,11 @@
 ﻿using Accoon.MMS.Api.Application.Interfaces.Database;
+using Accoon.MMS.Api.Application.Interfaces.Repositories;
 using Accoon.MMS.Api.Application.Interfaces.Services.Auth;
 using Accoon.MMS.Api.Application.UserCases.AccountActor.RegisterUser;
+using Accoon.MMS.Api.Domain.Entities;
+using Accoon.MMS.Api.Domain.Exceptions;
 using Accoon.MMS.Api.Domain.Identity;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -19,58 +23,48 @@ namespace Accoon.MMS.Api.Application.UserCases.AccountActor.login
         private readonly IDatabaseContext databaseContext;
         private readonly IMediator mediator;
         private readonly IJwtFactory jwtFactory;
+        private readonly IRefreshTokenRepository refreshTokenRepository;
+        private readonly IMapper mapper;
 
-
-        public LoginRequestHandler(UserManager<AppUser> userManager, ITokenFactory tokenFactory, IDatabaseContext databaseContext, IMediator mediator, IJwtFactory jwtFactory)
+        public LoginRequestHandler(UserManager<AppUser> userManager, ITokenFactory tokenFactory, IDatabaseContext databaseContext, IMediator mediator, IJwtFactory jwtFactory,
+            IRefreshTokenRepository refreshTokenRepository,
+            IMapper mapper)
         {
             this.userManager = userManager;
             this.tokenFactory = tokenFactory;
             this.databaseContext = databaseContext;
             this.mediator = mediator;
             this.jwtFactory = jwtFactory;
+            this.refreshTokenRepository= refreshTokenRepository;
+            this.mapper = mapper;
         }
-
 
         public async Task<LoginResponse> Handle(LoginRequest request, CancellationToken cancellationToken)
         {
-            var loginResponse = new LoginResponse() { AccessToken = null, RefreshToken = null, Success = false };
-
-            // get user
-            var user = await this.userManager.FindByNameAsync(request.UserName);
-            if (user == null)
+            // get app user
+            var appUser = await this.userManager.FindByNameAsync(request.UserName);            
+            if (appUser == null)
             {
-                loginResponse.Success = false;
-                return loginResponse;
+                throw new UserNotFoundException($"Cannot find user { request.UserName }");
             }
-
-            if (!await userManager.CheckPasswordAsync(user, request.Password))
+            
+            // validate password
+            if (!await userManager.CheckPasswordAsync(appUser, request.Password))
             {
-                loginResponse.Success = false;
-                return loginResponse;
+                throw new InvalidUsernamePasswordException("Invalid username and password. Please try again.");
             }
 
             // generate refresh token
             var refreshToken = tokenFactory.GenerateToken();
-            await this.databaseContext.RefreshTokens.AddAsync(new Domain.Entities.RefreshToken()
-            {
-                Token = refreshToken,
-                UserId = user.Id,
-                RemoteIpAddress = null,
-                Expires = DateTime.UtcNow.AddDays(5)
 
-            });
-
-            await this.databaseContext.SaveChangesAsync(cancellationToken);
-
-            loginResponse.AccessToken = await jwtFactory.GenerateEncodedToken(user.Id, user.UserName);
-            loginResponse.RefreshToken = refreshToken;
-            loginResponse.Success = true;
-
-            await this.mediator.Publish(loginResponse, cancellationToken);
-            return loginResponse;
+            // save refresh token
+            await this.refreshTokenRepository.AddRefreshTokenAsync(new RefreshToken(refreshToken, DateTime.UtcNow.AddDays(5), appUser.Id.ToString(), null));
+           
+            // create the login response and publish
+            var response = new LoginResponse(true, await jwtFactory.GenerateEncodedToken(appUser.Id, appUser.UserName), refreshToken);
+            await this.mediator.Publish(response, cancellationToken);
+            return response;
         }
-
-
     }
 }
 

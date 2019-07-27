@@ -35,6 +35,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Accoon.MMS.Api.Application.Interfaces.Services.Auth;
 using Accoon.MMS.Api.Application.UserCases.AccountActor.login;
+using Accoon.MMS.Api.Persistence.Repositories;
 
 namespace Accoon.MMS.Api.Presenter
 {
@@ -51,6 +52,15 @@ namespace Accoon.MMS.Api.Presenter
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+
+            // register repositories
+            services.Scan(scan => scan
+                .FromAssembliesOf(typeof(UserRepository))
+                .AddClasses(classes => classes.InExactNamespaceOf<UserRepository>())
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 // fluent validation
                 .AddFluentValidation(
@@ -184,8 +194,7 @@ namespace Accoon.MMS.Api.Presenter
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "AspNetCoreApiStarter", Version = "v1" });
-                // Swagger 2.+ support
+                c.SwaggerDoc("v1", new Info { Title = "MMS web api", Version = "v1" });                
                 c.AddSecurityDefinition("Bearer", new ApiKeyScheme
                 {
                     In = "header",
