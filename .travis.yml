@@ -7,7 +7,6 @@ branch:
     only:
         - master
 script:
-    - ls 
     - dotnet build MMS.Api\\Accoon.MMS.Api.Application -c Release
     - dotnet build MMS.Api\\Accoon.MMS.Api.Domain -c Release
     - dotnet build MMS.Api\\Accoon.MMS.Api.Infastructure -c Release
