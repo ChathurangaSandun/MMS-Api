@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Accoon.MMS.Api.Domain.Exceptions
 {
-    public class UserNotFoundException: Exception
+    public class UserNotFoundException: UnauthorizedAccessException
     {
         public UserNotFoundException(string message):base(message)
         {

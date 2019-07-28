@@ -1,5 +1,4 @@
-﻿using Accoon.MMS.Api.Application.Entities.Common;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;

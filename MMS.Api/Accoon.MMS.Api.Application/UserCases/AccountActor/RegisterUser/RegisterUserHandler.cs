@@ -11,7 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using System.Linq;
 namespace Accoon.MMS.Api.Application.UserCases.AccountActor.RegisterUser
 {
     public class RegisterUserHandler : IRequestHandler<RegisterUserRequest, RegisterUserResponse>
@@ -38,7 +38,8 @@ namespace Accoon.MMS.Api.Application.UserCases.AccountActor.RegisterUser
             if (!userCreateResult.Succeeded)
             {
                 //TODO best error returning way
-                throw new AppUserCreationFaildException("App user creation failed");
+                var firstError = userCreateResult.Errors.First();
+                throw new AppUserCreationFaildException(firstError.Description);
             }
 
             // save user 
