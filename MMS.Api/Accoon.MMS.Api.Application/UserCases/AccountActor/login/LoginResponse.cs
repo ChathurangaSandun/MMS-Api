@@ -1,5 +1,5 @@
 ﻿using Accoon.MMS.Api.Application.Entities.Auth;
-using Accoon.MMS.Api.Application.Entities.Common;
+using Accoon.MMS.Api.Domain.Common;
 using MediatR;
 using System;
 using System.Collections.Generic;
